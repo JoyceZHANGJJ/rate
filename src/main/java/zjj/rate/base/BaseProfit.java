@@ -52,7 +52,7 @@ public class BaseProfit {
     }
 
     /**
-     *
+     * timesProfit
      * @param times 次数
      */
     public void timesProfit(int times) {
@@ -73,6 +73,19 @@ public class BaseProfit {
             tempPrincp = princp + tempPrincp + profit;
         }
         return tempPrincp - princp * times;
+    }
+
+    public void profitToProfit(int times){
+        double profit = 0;
+        double tempPrincp = this.profit;
+        if(times==0){
+            return;
+        }
+        for (int i = 0; i < times; i++) {
+            profit = calculateProfit(tempPrincp + profit, rate);
+            tempPrincp = tempPrincp + profit;
+        }
+        this.profit=tempPrincp;
     }
 
     public double profitToProfit(double princp, double rt, int times) {
